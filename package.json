@@ -1,0 +1,22 @@
+{
+  "name": "sudoku-solver",
+  "version": "1.0.0",
+  "description": "Sudoku Solver Portal - Community puzzle submissions solved automatically",
+  "main": "solver.py",
+  "scripts": {
+    "serve": "python -m http.server 8000 --directory site",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open"
+  },
+  "keywords": [
+    "sudoku",
+    "solver",
+    "github-actions",
+    "community"
+  ],
+  "author": "projectaberto",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^13.6.1"
+  }
+}

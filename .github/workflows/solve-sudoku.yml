@@ -1,0 +1,44 @@
+name: Solve Sudoku & Update README
+
+on:
+  push:
+    branches: [main]
+    paths: ['puzzle/current.txt']
+
+jobs:
+  test-and-solve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run solver & update files
+        env:
+          MAX_HISTORY_KEEP: ${{ vars.MAX_HISTORY_KEEP || 50 }}
+        run: python solver.py
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Cypress & dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          start: python -m http.server 8000 --directory site
+          wait-on: 'http://localhost:8000'
+
+      - name: Commit & push changes (if any)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: solved latest puzzle 🔍 [auto]"
+          branch: main

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Solver Portal - Web Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sudoku Solver Portal</h1>
+        <p class="subtitle">Fill the grid below and submit to GitHub for solving</p>
+        
+        <div class="grid-wrapper">
+            <div id="grid" class="sudoku-grid"></div>
+        </div>
+        
+        <div class="controls">
+            <button id="clear" class="btn btn-secondary">Clear Grid</button>
+            <button id="submit" class="btn btn-primary">Submit to GitHub</button>
+        </div>
+        
+        <div class="info">
+            <p><strong>Instructions:</strong></p>
+            <ul>
+                <li>Enter digits 1-9 for clues</li>
+                <li>Leave cells empty for unknowns (press space or delete)</li>
+                <li>Click Submit to open a GitHub PR creation page</li>
+                <li>The puzzle will be automatically solved and the solution posted</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
